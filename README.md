@@ -30,12 +30,12 @@ This mirrors real-world banking data warehouses.
 #### 2. Feature Engineering (Core of the Project)
 Key behavioral metrics were derived using SQL CTEs:
 - Spending Behavior
-Average transaction value
-Spending volatility (STDDEV)
-Estimated monthly spend
+1. Average transaction value
+2. Spending volatility (STDDEV)
+3. Estimated monthly spend
 Rationale: Erratic and oversized spending often correlates with financial instability.
 - Gambling Exposure
-% of total spend at gambling merchants
+1. % of total spend at gambling merchants
 Gambling-heavy customers are statistically more likely to default.
 
 
