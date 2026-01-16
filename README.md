@@ -18,10 +18,25 @@ A synthetic but realistic banking dataset was generated to simulate production-s
 | `dim_merchants`     | Merchant categories (Gambling, Essentials, Electronics, etc.) |
 | `fact_transactions` | 2M transactions over 1 year                                   |
 | `fact_loans`        | 40K loans with status (Active, Closed, Defaulted)             |
+#### Why synthetic data?
+Allows safe simulation of sensitive financial use cases while preserving realistic patterns at scale.
 
-
-
-
+### Data Engineering & Modeling Approach
+1. Star Schema Design
+- Fact tables: Transactions & Loans
+- Dimensions: Customers & Merchants
+- Indexed customer keys for query performance
+This mirrors real-world banking data warehouses.
+2. Feature Engineering (Core of the Project)
+Key behavioral metrics were derived using SQL CTEs:
+a. Spending Behavior
+- Average transaction value
+- Spending volatility (STDDEV)
+- Estimated monthly spend
+Rationale: Erratic and oversized spending often correlates with financial instability.
+b. Gambling Exposure
+- % of total spend at gambling merchants
+Gambling-heavy customers are statistically more likely to default.
 
 
 
