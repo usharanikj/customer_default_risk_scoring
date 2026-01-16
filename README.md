@@ -76,5 +76,5 @@ Future Improvements
 
 Tech Stack
 
-PostgreSQL
+PostgreSQL:
 SQL (CTEs, joins, aggregations, indexing)
