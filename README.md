@@ -9,7 +9,7 @@ Synthetic but realistic banking data was generated to simulate a production-scal
 - 2 million transactions across multiple merchant categories
 - 40,000 loans with active, closed, and defaulted statuses
 - Merchant categories included essentials, entertainment, electronics, and gambling
-Data was modeled using a star schema:
+#### Data was modeled using a star schema:
 - Dimension tables: dim_customers, dim_merchants
 - Fact tables: fact_transactions, fact_loans
 ### Approach
