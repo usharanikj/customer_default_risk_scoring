@@ -4,6 +4,7 @@
 Banks need to proactively identify customers who are likely to default on loans. Traditional credit scores often lag real customer behavior.
 The objective of this project was to rank customers by default risk using transaction patterns, loan behavior, and spending habits, enabling early intervention before defaults occur.
 ### Data
+##### Note: All data is synthetically generated using Python (Faker + NumPy) to simulate realistic distributions while preserving privacy.
 Synthetic but realistic banking data was generated to simulate a production-scale environment:
 - 100,000 customers (demographics, income, job tenure)
 - 2 million transactions across multiple merchant categories
