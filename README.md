@@ -75,7 +75,6 @@ Future Improvements
 - Add customer tenure and product mix features
 
 Tech Stack
-Python (Pandas, NumPy, Faker)
 
 PostgreSQL
 SQL (CTEs, joins, aggregations, indexing)
