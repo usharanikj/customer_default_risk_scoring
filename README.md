@@ -64,6 +64,20 @@ Each rule answers one question: “Does this customer exhibit risky behavior?”
 Final Risk Score = Sum of all rule-based signals
 This mirrors interpretable risk models commonly used in regulated banking environments where explainability is critical.
 
+### Key Insights
+
+#### Behavioral signals outperform static demographics
+Customers with stable income but erratic spending ranked higher risk than lower-income stable spenders.
+
+#### Gambling behavior is a strong risk amplifier
+Even moderate gambling ratios significantly increased final risk scores.
+
+#### Past defaults dominate risk ranking
+Customers with prior defaults consistently surfaced at the top of the risk list.
+
+#### Dormancy is an underrated early warning
+Long inactivity combined with debt exposure flagged hidden risk cases.
+
 
 
 
