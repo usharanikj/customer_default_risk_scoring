@@ -66,26 +66,32 @@ This mirrors interpretable risk models commonly used in regulated banking enviro
 
 
 ### Key Insights
-#### 1. Behavioral signals outperform static demographics
+- Behavioral signals outperform static demographics
 Customers with stable income but erratic spending ranked higher risk than lower-income stable spenders.
-#### 2. Gambling behavior is a strong risk amplifier
+- Gambling behavior is a strong risk amplifier
 Even moderate gambling ratios significantly increased final risk scores.
-#### 3. Past defaults dominate risk ranking
+- Past defaults dominate risk ranking
 Customers with prior defaults consistently surfaced at the top of the risk list.
-#### 4. Dormancy is an underrated early warning
+- Dormancy is an underrated early warning
 Long inactivity combined with debt exposure flagged hidden risk cases.
 
 
 ### Business Recommendations
-#### 1. Early Intervention Program
+- Early Intervention Program
 Flag customers above a risk threshold for proactive engagement.
-#### 2. Dynamic Credit Limits
+- Dynamic Credit Limits
 Reduce exposure for customers showing rising behavioral risk.
-#### 3. Targeted Monitoring
+- Targeted Monitoring
 Prioritize customers with gambling-heavy spend + active loans.
-#### 4. Explainable Risk Framework
+- Explainable Risk Framework
 Use rule-based scores alongside ML models for regulatory compliance.
 
+
+### Impact (Estimated)
+If deployed in a real banking environment, this model could:
+- Reduce default losses by 10–15% through early detection
+- Improve collections efficiency by prioritizing top-risk customers
+- Provide transparent, auditable credit decisions
 
 
 
