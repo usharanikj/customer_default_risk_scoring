@@ -60,6 +60,7 @@ Each rule answers one question: “Does this customer exhibit risky behavior?”
 | Long inactivity (>90 days)     | +5     |
 | Large average transaction size | +5     |
 | Low income + active loans      | +5     |
+
 Final Risk Score = Sum of all rule-based signals
 This mirrors interpretable risk models commonly used in regulated banking environments where explainability is critical.
 
