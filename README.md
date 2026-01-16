@@ -9,6 +9,21 @@ Synthetic but realistic banking data was generated to simulate a production-scal
 - 2 million transactions across multiple merchant categories
 - 40,000 loans with active, closed, and defaulted statuses
 - Merchant categories included essentials, entertainment, electronics, and gambling
+Data was modeled using a star schema:
+- Dimension tables: dim_customers, dim_merchants
+- Fact tables: fact_transactions, fact_loans
+### Approach
+1. Generated large-scale datasets using Python (Pandas, NumPy, Faker)
+2. Designed and loaded a relational schema in SQL
+3. Optimized performance using indexes on fact tables
+4. Built multiple CTEs to derive behavioral risk metrics:
+- Spending volatility
+- Gambling spend ratio
+- Loan burden and default history
+- Income vs spending stress
+- Transaction recency (dormancy)
+5. Converted business rules into a rule-based risk scoring model
+6. Combined all risk signals into a final composite risk score per customer
 
 
 
