@@ -12,6 +12,13 @@ Build a rule-based customer default risk scoring model using transaction behavio
 3. Product & Policy Teams – to refine lending rules and thresholds
 ### Data Overview
 A synthetic but realistic banking dataset was generated to simulate production-scale data:
+| Table               | Description                                                   |
+| ------------------- | ------------------------------------------------------------- |
+| `dim_customers`     | 100K customers with income, geography, tenure                 |
+| `dim_merchants`     | Merchant categories (Gambling, Essentials, Electronics, etc.) |
+| `fact_transactions` | 2M transactions over 1 year                                   |
+| `fact_loans`        | 40K loans with status (Active, Closed, Defaulted)             |
+
 
 
 
