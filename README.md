@@ -29,19 +29,19 @@ Allows safe simulation of sensitive financial use cases while preserving realist
 This mirrors real-world banking data warehouses.
 #### 2. Feature Engineering (Core of the Project)
 Key behavioral metrics were derived using SQL CTEs:
-##### - Spending Behavior
+- Spending Behavior
 1. Average transaction value
 2. Spending volatility (STDDEV)
 3. Estimated monthly spend
 Rationale: Erratic and oversized spending often correlates with financial instability.
-##### - Gambling Exposure
+- Gambling Exposure
 1. % of total spend at gambling merchants
 Gambling-heavy customers are statistically more likely to default.
-##### - Loan Health
+- Loan Health
 1. Active loan count
 2. Past default history
 Past default is the strongest predictor of future default.
-##### - Transaction Recency
+- Transaction Recency
 1. Days since last transaction
 Dormancy can signal job loss, disengagement, or financial distress.
 
@@ -66,21 +66,17 @@ This mirrors interpretable risk models commonly used in regulated banking enviro
 
 
 ### Key Insights
-- Behavioral signals outperform static demographics. Customers with stable income but erratic spending ranked higher risk than lower-income stable spenders.
-- Gambling behavior is a strong risk amplifier. Even moderate gambling ratios significantly increased final risk scores.
-- Past defaults dominate risk ranking. Customers with prior defaults consistently surfaced at the top of the risk list.
-- Dormancy is an underrated early warning. Long inactivity combined with debt exposure flagged hidden risk cases.
+- Behavioral signals outperform static demographics: Customers with stable income but erratic spending ranked higher risk than lower-income stable spenders.
+- Gambling behavior is a strong risk amplifier: Even moderate gambling ratios significantly increased final risk scores.
+- Past defaults dominate risk ranking: Customers with prior defaults consistently surfaced at the top of the risk list.
+- Dormancy is an underrated early warning: Long inactivity combined with debt exposure flagged hidden risk cases.
 
 
 ### Business Recommendations
-- Early Intervention Program
-Flag customers above a risk threshold for proactive engagement.
-- Dynamic Credit Limits
-Reduce exposure for customers showing rising behavioral risk.
-- Targeted Monitoring
-Prioritize customers with gambling-heavy spend + active loans.
-- Explainable Risk Framework
-Use rule-based scores alongside ML models for regulatory compliance.
+- Early Intervention Program: Flag customers above a risk threshold for proactive engagement.
+- Dynamic Credit Limits: Reduce exposure for customers showing rising behavioral risk.
+- Targeted Monitoring: Prioritize customers with gambling-heavy spend + active loans.
+- Explainable Risk Framework: Use rule-based scores alongside ML models for regulatory compliance.
 
 
 ### Impact (Estimated)
