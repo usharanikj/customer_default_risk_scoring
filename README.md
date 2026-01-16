@@ -1,3 +1,35 @@
+# Project Title
+## Customer Credit Risk Scoring Using Transaction & Loan Behavior (SQL)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+------------------------------------------------------------------
+
 Project: Customer Default Risk Scoring System (SQL)
 
 Business Context
