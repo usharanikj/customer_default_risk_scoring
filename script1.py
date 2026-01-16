@@ -58,5 +58,4 @@ loans = [{
 pd.DataFrame(loans).to_csv('fact_loans.csv', index=False)
 print("Success! 4 CSV files generated.")
 
-
-
+# Need to add a join_date column to the dim_customers table in the Python generation script
