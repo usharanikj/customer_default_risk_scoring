@@ -1,67 +1,100 @@
 # Project Title
+
 ## Credit Default Risk Scoring Using Transaction & Behavioral Data
 
 ### Business Problem
+
 Banks face significant losses from loan defaults, especially when early warning signs are missed. Traditional credit scoring often relies on static attributes like income and credit history, which fail to capture real-time behavioral risk.
 
-#### Objective:
-Build a rule-based customer default risk scoring model using transaction behavior, loan history, and customer demographics - similar to an early-stage credit risk monitoring system used by retail banks.
+### Objective
 
-### Stakeholders
-1. Credit Risk Team: To identify high-risk customers proactively
-2. Collections Team: To prioritize follow-ups
-3. Product & Policy Teams: To refine lending rules and thresholds
+Build a **dynamic, rule-based credit default risk scoring model** using transactional behavior, loan history, peer benchmarking, and customer demographics. The model is implemented entirely in SQL and is designed to surface early warning signals and anomalous customer behavior.
 
-### Data Overview
-A synthetic but realistic banking dataset was generated to simulate production-scale data:
-| Table               | Description                                                   |
-| ------------------- | ------------------------------------------------------------- |
-| `dim_customers`     | ~100K customers with income, geography, tenure                 |
-| `dim_merchants`     | Merchant categories (Gambling, Essentials, Electronics, etc.) |
-| `fact_transactions` | ~2M transactions over 1 year                                   |
-| `fact_loans`        | ~40K loans with status (Active, Closed, Defaulted)             |
+---
 
-### Data Engineering & Modeling Approach
-#### 1. Star Schema Design
-- Fact tables: Transactions & Loans
-- Dimensions: Customers & Merchants
-- Indexed customer keys for query performance
+### Data Model
 
-#### 2. Feature Engineering
-Key behavioral metrics were derived using SQL CTEs:
-- **Spending Behavior:** Average transaction value, spending volatility (STDDEV), and estimated monthly spend.
-- **Gambling Exposure:** % of total spend at gambling merchants.
-- **Loan Health:** Active loan count and past default history.
-- **Transaction Recency:** Days since last transaction (Dormancy).
+The solution uses five core tables:
 
-### Risk Scoring Logic
-A rule-based scoring model converts business intuition into numeric risk points. 
+* **customers** – demographic and employment attributes, tenure, and income
+* **transactions** – customer spending behavior over time
+* **merchants** – merchant category enrichment (e.g., Gambling)
+* **loans** – active and historical loan performance
+* **derived CTEs** – analytical feature layers used for scoring
 
-#### Scoring Rules:
-| Risk Signal                    | Points | Rationale |
-| ------------------------------ | ------ | --------- |
-| Past default history           | +25    | Strongest predictor of future default |
-| Gambling > 20% of spend        | +20    | High-risk behavioral indicator |
-| More than 2 active loans       | +15    | Indicates over-leveraged status |
-| High spend volatility          | +10    | Signals erratic/unstable finances |
-| Spending > 80% of income       | +10    | High debt-to-income stress |
-| Long inactivity (>90 days)     | +5     | Potential disengagement or job loss |
-| Large average transaction size | +5     | Potential runaway spend/fraud risk |
-| New Customer (< 6 months)      | +5     | Higher uncertainty with new accounts |
-| Low income + active loans      | +5     | Thin financial buffers |
-| Geography Risk (Simulated)     | +0     | Placeholder for regional risk factors |
+Indexes are created on customer foreign keys to support scalable analytics.
 
-**Final Risk Score** = Sum of all weighted signals.
+---
 
-### Key Insights
-- **Behavioral signals outperform static demographics:** Customers with stable income but erratic spending ranked higher risk than lower-income stable spenders.
-- **Gambling behavior is a strong risk amplifier:** Even moderate gambling ratios significantly increased final risk scores.
-- **Past defaults dominate risk ranking:** Customers with prior defaults consistently surfaced at the top of the risk list.
+### Feature Engineering & Risk Signals
 
-### Business Recommendations
-- **Early Intervention Program:** Flag customers above a risk threshold for proactive engagement.
-- **Dynamic Credit Limits:** Reduce exposure for customers showing rising behavioral risk.
-- **Explainable Risk Framework:** Use rule-based scores alongside ML models for regulatory compliance.
+The scoring logic is built using layered CTEs:
 
-#### Tech Stack
-PostgreSQL (CTEs, Joins, Indexing, Window Functions)
+1. **Customer Statistics**
+
+   * Average transaction value
+   * Transaction volatility (coefficient of variation)
+   * Estimated monthly spend
+
+2. **Behavioral Risk Indicators**
+
+   * Gambling spend ratio (share of total spend)
+   * Transaction dormancy (days since last transaction)
+
+3. **Loan Health**
+
+   * Active loan count
+   * Historical defaults
+
+4. **Peer Benchmarking**
+
+   * Customers grouped into income percentiles
+   * Detection of loan outliers relative to income peers
+
+---
+
+### Risk Scoring Rules
+
+Each customer receives a cumulative risk score based on the following rules:
+
+| Rule                   | Risk Signal                  | Score |
+| ---------------------- | ---------------------------- | ----- |
+| Gambling exposure      | >20% of spend                | +20   |
+| Past loan default      | Any prior default            | +25   |
+| Transaction volatility | StdDev > 2× mean             | +10   |
+| Income stress          | Spend >80% of monthly income | +10   |
+| New customer           | Tenure < 6 months            | +5    |
+| Account dormancy       | No txn > 90 days             | +5    |
+| Peer loan outlier      | Loans > peer avg + 2         | +25   |
+
+The **final risk score** is the sum of all triggered rule scores.
+
+---
+
+### Output
+
+The final query produces:
+
+* Individual rule-level risk contributions
+* A consolidated **final_risk_score** per customer
+* Results ordered from highest to lowest risk
+
+This makes the model transparent, explainable, and suitable for regulatory or business review.
+
+---
+
+### Use Cases
+
+* Early warning system for default risk
+* Behavioral monitoring for retail banking
+* Feature prototyping for ML-based credit models
+* Regulatory-friendly, explainable risk scoring
+
+---
+
+### Next Enhancements
+
+* Time-windowed behavior (last 30/60/90 days)
+* Weight calibration using historical defaults
+* Integration with machine learning pipelines
+* Country- or segment-specific peer groups
